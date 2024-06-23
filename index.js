@@ -2,41 +2,38 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const userRoute = require("./Routers/userRoute");
+const userRoute = require("./Routes/userRoute");
+const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
 
 const MONGO_DB = process.env.MONGO_DB;
 const PORT = process.env.PORT;
 
+app.use(express.json());
+// Enable CORS for all routes
+app.use(cors({ origin: "http://localhost:3000" }));
+//User Route
+app.use("/api", userRoute);
 
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Booking Management System",
+      version: "1.0.0",
+      description:
+        "Booking Management System covered Create, Read, Update, and Delete operations using a Node.js API",
+    },
+    servers: [{ url: "http://localhost:5000/api" }],
+  },
 
-   app.use(express.json());
-   // Enable CORS for all routes
-   app.use(cors({ origin: 'http://localhost:3000' }));
-   //User Route
-   app.use("/api", userRoute);
-   
-   const options = {
-     definition: {
-       openapi: '3.0.0',
-       info: {
-         title: 'Booking Management System',
-         version: '1.0.0',
-         description: 'Booking Management System covered Create, Read, Update, and Delete operations using a Node.js API',
-       },  
-       servers:[
-         {url:'http://localhost:5000/api'},
-       ],
-     },
-   
-     apis: ['./routes/*.js'], 
-   };
-   
-   const specs = swaggerJsdoc(options);
-   
-   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
-   
-   
-   
+  apis: ["./Routes/*.js"],
+};
+
+const specs = swaggerJsdoc(options);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 mongoose
   .connect(MONGO_DB)
