@@ -12,7 +12,7 @@ const {
 /**
  * @swagger
  * tags:
- *   name: Service
+ *   name: Services
  *   description: CRUD Operations related to Service in Booking system
  */
 /**
@@ -27,8 +27,8 @@ const {
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
+ *            type: object
+ *            properties:
  *               serviceName:
  *                 type: string
  *               description:
@@ -37,6 +37,11 @@ const {
  *                 type: number
  *               duration:
  *                 type: number
+ *            example:
+ *                 serviceName: Haircut,
+ *                 description: Standard haircut service,
+ *                 price: 30,
+ *                 duration: 30
  *     responses:
  *       200:
  *         description: Created successfully
@@ -59,7 +64,7 @@ router.post("/service", createService);
  *       500:
  *         description: Internal server error
  */
-router.get("/service", getAllServices);
+router.get("/services", getAllServices);
 
 // Get a Services
 /**

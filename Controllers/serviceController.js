@@ -43,7 +43,7 @@ const createService = async (req, res) => {
       if (!_service) {
         return res
           .status(404)
-          .json({ message: `cannot find any Service with ID ${id}` });
+          .json({ message: `cannot find any Service ID ${id}` });
       }
       const updatedService = await Service.findById(id);
       res.status(200).json(updatedService);
@@ -60,7 +60,7 @@ const createService = async (req, res) => {
       if (!_service) {
         return res
           .status(404)
-          .json({ message: `cannot find any Service with ID ${id}` });
+          .json({ message: `cannot find any Service ID ${id}` });
       }
       res.status(200).json(_service);
     } catch (error) {
