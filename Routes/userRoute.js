@@ -1,13 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const {
-    createUser,
-    getAllUsers,
-    getUser,
-    updateUser,
-    deleteUser,
+  createUser,
+  getAllUsers,
+  getUser,
+  updateUser,
+  deleteUser,
 } = require("../Controllers/userController");
-
 
 // routes/userRoute.js
 /**
@@ -41,7 +40,6 @@ const {
 //Get All Users
 router.get("/user", getAllUsers);
 
-
 /**
  * @swagger
  * /user/{id}:
@@ -71,54 +69,98 @@ router.get("/user", getAllUsers);
 //Get the User
 router.get("/user/:id", getUser);
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *       type: object
+ *       required:
+ *         - username
+ *         - password
+ *         - email
+ *         - firstName
+ *         - lastName
+ *         - gender
+ *         - phoneNumber
+ *         - address
+ *         - city
+ *       properties:
+ *         _id:
+ *           type: string
+ *           description: The auto-generated id of the user
+ *         username:
+ *           type: string
+ *           description: The username of the user
+ *         password:
+ *           type: string
+ *           description: The hashed password of the user
+ *         email:
+ *           type: string
+ *           description: The email of the user
+ *         firstName:
+ *           type: string
+ *           description: The first name of the user
+ *         lastName:
+ *           type: string
+ *           description: The last name of the user
+ *         gender:
+ *           type: string
+ *           description: The gender of the user
+ *         phoneNumber:
+ *           type: string
+ *           description: The phone number of the user
+ *         address:
+ *           type: string
+ *           description: The address of the user
+ *         city:
+ *           type: string
+ *           description: The city of the user
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           description: The date the user was created
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           description: The date the user was last updated
+ *       example:
+ *         username: johndoe
+ *         password: password123
+ *         email: johndoe@example.com
+ *         firstName: John
+ *         lastName: Doe
+ *         gender: Male
+ *         phoneNumber: 123-456-7890
+ *         address: 123 Main St
+ *         city: Anytown
+ */
 
 /**
  * @swagger
- * /user:
+ * /users:
  *   post:
  *     summary: Create a new user
- *     tags: [Users]
+ *     tags: [User]
  *     requestBody:
- *       description: User object to be added
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               address:
- *                 type: string
- *               dateOfBirth:
- *                 type: date
- *               gender:
- *                 type: string
- *               phoneNum:
- *                 type: integer
- *             example:
- *                name: "John Doe"
- *                address: "Colombo - Srilanka "
- *                dateOfBirth: 07/14/1990
- *                gender: "male"
- *                phoneNum: 01145252525
+ *             $ref: '#/components/schemas/User'
  *     responses:
  *       201:
- *         description: Successful response
+ *         description: The user was successfully created
  *         content:
  *           application/json:
- *             example:
- *               data: [{}]
+ *             schema:
+ *               $ref: '#/components/schemas/User'
  *       400:
- *         description: Invalid request
+ *         description: Bad request
  */
 
 //Create User
 router.post("/user", createUser);
-
-
-
-
 
 /**
  * @swagger
@@ -178,7 +220,6 @@ router.post("/user", createUser);
 
 //put the User
 router.put("/user/:id", updateUser);
-
 
 /**
  * @swagger
