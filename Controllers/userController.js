@@ -43,7 +43,7 @@ const updateUser = async (req, res) => {
     if (!_user) {
       return res
         .status(404)
-        .json({ message: `cannot find any User with ID ${id}` });
+        .json({ message: `cannot find any User ID ${id}` });
     }
     const updatedUser = await User.findById(id);
     res.status(200).json(updatedUser);
@@ -60,7 +60,7 @@ const deleteUser = async (req, res) => {
     if (!_user) {
       return res
         .status(404)
-        .json({ message: `cannot find any User with ID ${id}` });
+        .json({ message: `cannot find any User ID ${id}` });
     }
     res.status(200).json(_user);
   } catch (error) {
