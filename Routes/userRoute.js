@@ -134,14 +134,11 @@ router.get("/user/:id", getUser);
  *         phoneNumber: 123-456-7890
  *         address: 123 Main St
  *         city: Anytown
- */
 
-/**
- * @swagger
- * /users:
+ * /user:
  *   post:
  *     summary: Create a new user
- *     tags: [User]
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       content:
