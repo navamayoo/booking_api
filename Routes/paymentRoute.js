@@ -50,7 +50,7 @@ router.post("/payment", createPayment);
  *       500:
  *         description: Internal server error
  */
-router.get("/payment", getAllPayments);
+router.get("/payments", getAllPayments);
 
 /**
  * @swagger
