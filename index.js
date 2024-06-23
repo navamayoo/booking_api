@@ -9,6 +9,7 @@ const swaggerJsdoc = require("swagger-jsdoc");
 const userRoute = require("./Routes/userRoute");
 const serviceRoute = require("./Routes/serviceRoute");
 const bookingRoute = require("./Routes/bookingRoute");
+const paymentRoute = require("./Routes/paymentRoute");
 
 const MONGO_DB = process.env.MONGO_DB;
 const PORT = process.env.PORT;
@@ -16,12 +17,16 @@ const PORT = process.env.PORT;
 app.use(express.json());
 // Enable CORS for all routes
 app.use(cors({ origin: "http://localhost:3000" }));
+
 //User Route
 app.use("/api", userRoute);
 //Service Route
 app.use("/api", serviceRoute);
 //Booking Route
 app.use("/api", bookingRoute);
+//Payment Route
+app.use("/api", paymentRoute);
+
 
 const options = {
   definition: {
