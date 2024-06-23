@@ -2,10 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const userRoute = require("./Routes/userRoute");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
+
+const userRoute = require("./Routes/userRoute");
+const serviceRoute = require("./Routes/serviceRoute");
+const bookingRoute = require("./Routes/bookingRoute");
 
 const MONGO_DB = process.env.MONGO_DB;
 const PORT = process.env.PORT;
@@ -15,6 +18,10 @@ app.use(express.json());
 app.use(cors({ origin: "http://localhost:3000" }));
 //User Route
 app.use("/api", userRoute);
+//Service Route
+app.use("/api", serviceRoute);
+//Booking Route
+app.use("/api", bookingRoute);
 
 const options = {
   definition: {
