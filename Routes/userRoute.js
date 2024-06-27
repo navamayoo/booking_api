@@ -38,7 +38,7 @@ const {
  *              message: "Bad Request"
  */
 //Get All Users
-router.get("/user", getAllUsers);
+router.get("/users", getAllUsers);
 
 /**
  * @swagger
