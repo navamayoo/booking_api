@@ -171,6 +171,7 @@ router.delete("/booking/:id", deleteBooking);
 
 // Find User by Booking
 router.get('/booking/:id/user', findUserByBooking);
+// Find Booking by user
 router.get('/booking/:id/booking', findBookingsByUser);
 module.exports = router;
 

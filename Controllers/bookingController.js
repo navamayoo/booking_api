@@ -1,12 +1,25 @@
 const { models } = require("mongoose");
 const Booking = require("../Models/bookingModel");
 const User = require("../Models/userModel");
+ const {isTimeSlotAvailable} = require("../Utils/HelpFunction");
 
 //Create Booking
 const createBooking = async (req, res) => {
   try {
-    const _booking = await Booking.create(req.body);
-    res.status(200).json(_booking);
+
+    const isAvailable = await isTimeSlotAvailable(
+      req.body.serviceId,
+      req.body.bookingDate,
+      req.body.timeSlotId
+    );
+    if (!isAvailable) {
+      return res
+        .status(400)
+        .json({ message: "The selected time slot is not available." });
+    } else {
+      const _booking = await Booking.create(req.body);
+      res.status(200).json(_booking);
+    }
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ message: error.message });
