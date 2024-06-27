@@ -10,6 +10,7 @@ const userRoute = require("./Routes/userRoute");
 const serviceRoute = require("./Routes/serviceRoute");
 const bookingRoute = require("./Routes/bookingRoute");
 const paymentRoute = require("./Routes/paymentRoute");
+const timeSlotRoute = require("./Routes/timeSlotRoute");
 
 const MONGO_DB = process.env.MONGO_DB;
 const PORT = process.env.PORT;
@@ -26,7 +27,8 @@ app.use("/api", serviceRoute);
 app.use("/api", bookingRoute);
 //Payment Route
 app.use("/api", paymentRoute);
-
+//TimeSlot Route
+app.use("/api", timeSlotRoute);
 
 const options = {
   definition: {
