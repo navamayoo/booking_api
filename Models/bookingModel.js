@@ -5,8 +5,6 @@ const bookingSchema = new mongoose.Schema({
   serviceId: { type: mongoose.Schema.Types.ObjectId, ref: 'Service', required: true },
   bookingDate: { type: Date, required: true },
   timeSlotId: { type: mongoose.Schema.Types.ObjectId, ref: 'TimeSlot', required: true },
-  // startTime: { type: Date, required: true },
-  // endTime: { type: Date, required: true },
   //status: { type: String, enum: ['Pending', 'Confirmed', 'Cancelled'], default: 'Pending' },
   notes: { type: String },
   paymentId: { type: mongoose.Schema.Types.ObjectId, ref: 'Payment' },

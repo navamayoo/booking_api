@@ -1,13 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const {
-    createPayment,
-    getAllPayments,
-    getPayment,
-    updatePayment,
-    deletePayment,
+  createPayment,
+  getAllPayments,
+  getPayment,
+  updatePayment,
+  deletePayment,
 } = require("../Controllers/paymentController");
-
 
 /**
  * @swagger

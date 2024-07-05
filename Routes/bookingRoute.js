@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const {
-    createBooking,
-    getAllBookings,
-    getBooking,
-    updateBooking,
-    deleteBooking,
-    findUserByBooking,
-    findBookingsByUser
+  createBooking,
+  getAllBookings,
+  getBooking,
+  updateBooking,
+  deleteBooking,
+  findUserByBooking,
+  findBookingsByUser,
 } = require("../Controllers/bookingController");
 
 // Routes for CRUD operations on bookings
@@ -170,8 +170,7 @@ router.put("/booking/:id", updateBooking);
 router.delete("/booking/:id", deleteBooking);
 
 // Find User by Booking
-router.get('/booking/:id/user', findUserByBooking);
+router.get("/booking/:id/user", findUserByBooking);
 // Find Booking by user
-router.get('/booking/:id/booking', findBookingsByUser);
+router.get("/booking/:id/booking", findBookingsByUser);
 module.exports = router;
-

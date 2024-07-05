@@ -1,19 +1,15 @@
 const Booking = require("../Models/bookingModel");
 
-  const isTimeSlotAvailable = async (serviceId, bookingDate, timeSlotId, ) => {
-   
-    const conflictingBooking = await Booking.findOne({
-      serviceId,
-      bookingDate,
-      timeSlotId,
-    });
-    
-    return !conflictingBooking;
-  };
-  
+const isTimeSlotAvailable = async (serviceId, bookingDate, timeSlotId) => {
+  const conflictingBooking = await Booking.findOne({
+    serviceId,
+    bookingDate,
+    timeSlotId,
+  });
 
-  module.exports = {
-    isTimeSlotAvailable,
+  return !conflictingBooking;
+};
 
-  };
-  
+module.exports = {
+  isTimeSlotAvailable,
+};

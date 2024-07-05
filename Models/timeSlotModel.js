@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const timeSlotSchema = new mongoose.Schema({
-    slot: { type: Number, required: true },
+  slot: { type: Number, required: true },
   description: { type: String, required: false },
   startTime: { type: Date, required: true },
   endTime: { type: Date, required: true },

@@ -1,5 +1,5 @@
 const { models } = require("mongoose");
-const TimeSlot = require('../Models/timeSlotModel');
+const TimeSlot = require("../Models/timeSlotModel");
 
 // Create a new time slot
 const createTimeSlot = async (req, res) => {
@@ -28,7 +28,7 @@ const getTimeSlotById = async (req, res) => {
   try {
     const timeSlot = await TimeSlot.findById(req.params.id);
     if (!timeSlot) {
-      return res.status(404).json({ error: 'TimeSlot not found' });
+      return res.status(404).json({ error: "TimeSlot not found" });
     }
     res.status(200).json(timeSlot);
   } catch (error) {
@@ -46,7 +46,7 @@ const updateTimeSlot = async (req, res) => {
       { new: true, runValidators: true }
     );
     if (!updatedTimeSlot) {
-      return res.status(404).json({ error: 'TimeSlot not found' });
+      return res.status(404).json({ error: "TimeSlot not found" });
     }
     res.status(200).json(updatedTimeSlot);
   } catch (error) {
@@ -59,9 +59,9 @@ const deleteTimeSlot = async (req, res) => {
   try {
     const deletedTimeSlot = await TimeSlot.findByIdAndDelete(req.params.id);
     if (!deletedTimeSlot) {
-      return res.status(404).json({ error: 'TimeSlot not found' });
+      return res.status(404).json({ error: "TimeSlot not found" });
     }
-    res.status(200).json({ message: 'TimeSlot deleted successfully' });
+    res.status(200).json({ message: "TimeSlot deleted successfully" });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
