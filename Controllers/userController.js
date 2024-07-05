@@ -1,4 +1,3 @@
-
 const { models } = require("mongoose");
 const User = require("../Models/userModel");
 
@@ -41,9 +40,7 @@ const updateUser = async (req, res) => {
     const _user = await User.findByIdAndUpdate(id, req.body);
     // we cannot find any User in database
     if (!_user) {
-      return res
-        .status(404)
-        .json({ message: `cannot find any User ID ${id}` });
+      return res.status(404).json({ message: `cannot find any User ID ${id}` });
     }
     const updatedUser = await User.findById(id);
     res.status(200).json(updatedUser);
@@ -58,9 +55,7 @@ const deleteUser = async (req, res) => {
     const { id } = req.params;
     const _user = await User.findByIdAndDelete(id);
     if (!_user) {
-      return res
-        .status(404)
-        .json({ message: `cannot find any User ID ${id}` });
+      return res.status(404).json({ message: `cannot find any User ID ${id}` });
     }
     res.status(200).json(_user);
   } catch (error) {

@@ -1,12 +1,11 @@
 const { models } = require("mongoose");
 const Booking = require("../Models/bookingModel");
 const User = require("../Models/userModel");
- const {isTimeSlotAvailable} = require("../Utils/HelpFunction");
+const { isTimeSlotAvailable } = require("../Utils/HelpFunction");
 
 //Create Booking
 const createBooking = async (req, res) => {
   try {
-
     const isAvailable = await isTimeSlotAvailable(
       req.body.serviceId,
       req.body.bookingDate,
