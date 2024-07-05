@@ -170,7 +170,67 @@ router.put("/booking/:id", updateBooking);
 router.delete("/booking/:id", deleteBooking);
 
 // Find User by Booking
+/**
+ * @swagger
+ * /booking/{id}/user:
+ *   get:
+ *     summary: Find User by Booking
+ *     tags:
+ *       - Bookings
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Booking ID
+ *     responses:
+ *       200:
+ *         description: User found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 name:
+ *                   type: string
+ *       404:
+ *         description: User not found
+ */
 router.get("/booking/:id/user", findUserByBooking);
 // Find Booking by user
+/**
+ * @swagger
+ * /booking/{id}/booking:
+ *   get:
+ *     summary: Find Booking by User
+ *     tags:
+ *       - Bookings
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: User ID
+ *     responses:
+ *       200:
+ *         description: Booking found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 user:
+ *                   type: string
+ *                 date:
+ *                   type: string
+ *       404:
+ *         description: Booking not found
+ */
 router.get("/booking/:id/booking", findBookingsByUser);
 module.exports = router;
